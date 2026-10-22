@@ -1,1 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClearVision Eye Care Center</title>
+    <!-- Google Fonts for professional look -->
+    <link href="https://googleapis.com" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Hero Section Styling */
+        .hero-section {
+            background: linear-gradient(135deg, rgba(240, 248, 255, 0.9), rgba(223, 240, 254, 0.9)), 
+                        url('https://unsplash.com');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 50px 10%;
+        }
+
+        .hero-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            gap: 50px;
+        }
+
+        /* Left Side: Text Content */
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            color: #0d3b66;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero-content h1 span {
+            color: #0077b6;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: #4a5568;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        /* Appointment Button */
+        .cta-btn {
+            display: inline-block;
+            padding: 15px 35px;
+            background-color: #0077b6;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0, 119, 182, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            background-color: #03045e;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(3, 4, 94, 0.4);
+        }
+
+        /* Right Side: Professional Image */
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Responsive Design for Mobile */
+        @media (max-width: 968px) {
+            .hero-container {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 40px;
+            }
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .hero-image {
+                margin-top: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section Start -->
+    <section class="hero-section">
+        <div class="hero-container">
+            
+            <!-- Left Content -->
+            <div class="hero-content">
+                <h1>ClearVision <br><span>Eye Care Center</span></h1>
+                <p>Aap ki aankhon ki hifazat hamari awaleen tarjeeh hai. Behtareen doctors aur jadeed tareen technology ke sath, hum dete hain aap ko wazeh aur roshan nazar.</p>
+                <a href="https://wa.me" target="_blank" class="cta-btn">Book Appointment</a>
+            </div>
+
+            <!-- Right Image -->
+            <div class="hero-image">
+                <img src="https://unsplash.com" alt="Eyecare Specialist">
+            </div>
+
+        </div>
+    </section>
+    <!-- Hero Section End -->
+
+</body>
+</html>
 
