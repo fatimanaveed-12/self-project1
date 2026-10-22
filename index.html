@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+
+        
+       <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -15,7 +17,7 @@
             scroll-behavior: smooth;
         }
 
-        /* --- 1. Navigation Menu Styling --- */
+        /* --- Navigation Menu Styling --- */
         .navbar {
             position: fixed;
             top: 0;
@@ -59,16 +61,13 @@
             color: #0077b6;
         }
 
-        /* --- 2. Hero Section Styling --- */
+        /* --- Hero Section Styling --- */
         .hero-section {
-            background: linear-gradient(135deg, rgba(240, 248, 255, 0.9), rgba(223, 240, 254, 0.9)), 
-                        url('https://unsplash.com');
-            background-size: cover;
-            background-position: center;
+            background: #f0f8ff;
             min-height: 100vh;
             display: flex;
             align-items: center;
-            padding: 100px 10% 50px 10%; /* Top padding increased for fixed navbar */
+            padding: 120px 10% 60px 10%;
         }
 
         .hero-container {
@@ -122,17 +121,72 @@
             box-shadow: 0 6px 20px rgba(3, 4, 94, 0.4);
         }
 
-        .hero-image {
+        /* --- CSS Built-in Eye Care Banner (No external image needed) --- */
+        .hero-graphic {
             flex: 1;
             display: flex;
             justify-content: center;
+            align-items: center;
         }
 
-        .hero-image img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        .eye-banner {
+            width: 100%;
+            max-width: 450px;
+            height: 350px;
+            background: linear-gradient(135deg, #0077b6, #03045e);
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(3, 4, 94, 0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Beautiful Eye Icon using CSS shapes */
+        .eye-icon-shape {
+            width: 120px;
+            height: 70px;
+            background-color: #ffffff;
+            border-radius: 100px / 60px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .eye-pupil {
+            width: 45px;
+            height: 45px;
+            background-color: #0077b6;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .eye-center {
+            width: 20px;
+            height: 20px;
+            background-color: #03045e;
+            border-radius: 50%;
+        }
+
+        .eye-banner h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .eye-banner p {
+            font-size: 0.9rem;
+            opacity: 0.8;
         }
 
         /* Responsive Design */
@@ -143,26 +197,26 @@
             .nav-links {
                 gap: 15px;
             }
-            .nav-links a {
-                font-size: 0.9rem;
-            }
             .hero-container {
                 flex-direction: column;
                 text-align: center;
-                padding-top: 40px;
             }
             .hero-content h1 {
                 font-size: 2.5rem;
             }
-            .hero-image {
-                margin-top: 30px;
+            .hero-graphic {
+                margin-top: 40px;
+                width: 100%;
+            }
+            .eye-banner {
+                height: 300px;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- 1. Navigation Menu (Navbar) Start -->
+    <!-- Navigation Menu (Navbar) -->
     <nav class="navbar">
         <a href="#" class="logo">Clear<span>Vision</span></a>
         <ul class="nav-links">
@@ -172,9 +226,8 @@
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
-    <!-- Navigation Menu End -->
 
-    <!-- 2. Hero Section Start -->
+    <!-- Hero Section -->
     <section class="hero-section">
         <div class="hero-container">
             
@@ -185,19 +238,24 @@
                 <a href="https://wa.me" target="_blank" class="cta-btn">Book Appointment</a>
             </div>
 
-            <!-- Right Image -->
-            <div class="hero-image">
-                <img src="https://unsplash.com" alt="Eyecare Specialist">
+            <!-- Right Graphic Banner (Made purely with CSS code) -->
+            <div class="hero-graphic">
+                <div class="eye-banner">
+                    <div class="eye-icon-shape">
+                        <div class="eye-pupil">
+                            <div class="eye-center"></div>
+                        </div>
+                    </div>
+                    <h3>Advanced Eye Clinic</h3>
+                    <p>Modern Diagnostic & Premium Care Setup</p>
+                </div>
             </div>
 
         </div>
     </section>
-    <!-- Hero Section End -->
 
 </body>
 </html>
 
-        
-       
 
 
