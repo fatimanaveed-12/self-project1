@@ -792,7 +792,255 @@
     
    
 
-                    
+    <!-- ================================================================= -->
+    <!-- Ultra-Attractive Services Section - Square Corners & Neon Glow   -->
+    <!-- ================================================================= -->
+    <style>
+        .services-section {
+            padding: 100px 8%;
+            background-color: #0b0f19; /* Ultra Dark Background */
+            color: #ffffff;
+            border-top: 1px solid #1e2640;
+        }
+
+        .services-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .services-header .sub-title {
+            color: #00a8cc;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .services-header h2 {
+            color: #ffffff;
+            font-size: 38px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        /* Clean 3-Column Layout Row */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Fixed 3 Columns */
+            gap: 30px;
+            width: 100%;
+        }
+
+        .service-card {
+            background: #161f38; /* Dark Contrast Blue */
+            padding: 40px 30px;
+            border-radius: 0px !important; /* Strictly Sharp Square Corners */
+            border: 1px solid #222f54;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Top Accent line for luxury accent */
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #0056b3, #00a8cc);
+            transition: width 0.4s ease;
+        }
+
+        /* Premium Hover Effects */
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: #00a8cc;
+            background: #1c2746;
+            box-shadow: 0 15px 40px rgba(0, 168, 204, 0.15); /* Neon glow effect */
+        }
+
+        .service-card:hover::before {
+            width: 100%;
+        }
+
+        .service-icon-box {
+            width: 70px;
+            height: 70px;
+            background: rgba(0, 168, 204, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            border-radius: 0px !important; /* Square corners */
+            border-left: 3px solid #00a8cc;
+            transition: all 0.4s ease;
+        }
+
+        .service-icon-box i {
+            color: #00a8cc;
+            font-size: 32px;
+            transition: transform 0.4s ease;
+        }
+
+        .service-card:hover .service-icon-box {
+            background: #00a8cc;
+            border-left-color: #0056b3;
+        }
+
+        .service-card:hover .service-icon-box i {
+            color: #ffffff;
+            transform: rotateY(180deg); /* Premium icon flip on hover */
+        }
+
+        .service-card h3 {
+            color: #ffffff;
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        .service-card p {
+            color: #94a3b8;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .service-link {
+            color: #00a8cc;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s ease;
+        }
+
+        .service-card:hover .service-link {
+            color: #ffffff;
+        }
+
+        .service-link i {
+            font-size: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover .service-link i {
+            transform: translateX(5px);
+        }
+
+        /* Responsive Fix for Smaller Tablets and Mobiles */
+        @media (max-width: 992px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+    <section class="services-section">
+        <div class="services-header">
+            <span class="sub-title">Our Expertise</span>
+            <h2>World Class Eye Care Services</h2>
+        </div>
+
+        <!-- Tight, Organized 3-Column Card Layout -->
+        <div class="services-grid">
+            
+            <!-- Service 1 -->
+            <div class="service-card">
+                <div>
+                    <div class="service-icon-box">
+                        <i class="fa-solid fa-laser-blast"></i>
+                    </div>
+                    <h3>LASIK & Refractive Surgery</h3>
+                    <p>Say goodbye to glasses and contact lenses. Our ultra-precise wavefront laser technology reshapes your cornea safely for clear 20/20 vision.</p>
+                </div>
+                <a href="#" class="service-link">Read Details <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="service-card">
+                <div>
+                    <div class="service-icon-box">
+                        <i class="fa-solid fa-eye-dropper"></i>
+                    </div>
+                    <h3>Cataract Surgery (Phaco)</h3>
+                    <p>Restore your cloudy vision through stitchless micro-incision phacoemulsification technology with premium advanced multi-focal lens implants.</p>
+                </div>
+                <a href="#" class="service-link">Read Details <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="service-card">
+                <div>
+                    <div class="service-icon-box">
+                        <i class="fa-solid fa-circle-nodes"></i>
+                    </div>
+                    <h3>Glaucoma Management</h3>
+                    <p>Protect your optic nerve from irreversible damage. We provide early laser diagnostics, pressure testing, and microscopic modern shunt implants.</p>
+                </div>
+                <a href="#" class="service-link">Read Details <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+            <!-- Service 4 -->
+            <div class="service-card">
+                <div>
+                    <div class="service-icon-box">
+                        <i class="fa-solid fa-shield-eye"></i>
+                    </div>
+                    <h3>Retina & Macular Care</h3>
+                    <p>Advanced treatment protocols for diabetic retinopathy, age-related macular degeneration (AMD), and micro-surgical retinal detachment solutions.</p>
+                </div>
+                <a href="#" class="service-link">Read Details <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+            <!-- Service 5 -->
+            <div class="service-card">
+                <div>
+                    <div class="service-icon-box">
+                        <i class="fa-solid fa-baby"></i>
+                    </div>
+                    <h3>Pediatric Ophthalmology</h3>
+                    <p>Dedicated clinical specialized care for children's eyes, dealing gently with lazy eye syndroms, childhood squints, and digital strain management.</p>
+                </div>
+                <a href="#" class="service-link">Read Details <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+            <!-- Service 6 -->
+            <div class="service-card">
+                <div>
+                    <div class="service-icon-box">
+                        <i class="fa-solid fa-kit-medical"></i>
+                    </div>
+                    <h3>24/7 Eye Emergency Care</h3>
+                    <p>Immediate medical intervention for accidental ocular trauma, chemical eye burns, sudden vision blackouts, and acute painful infections.</p>
+                </div>
+                <a href="#" class="service-link">Read Details <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+        </div>
+    </section>
+
+
+
+
+
+
+    
 
 
     
