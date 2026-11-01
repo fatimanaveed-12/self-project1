@@ -1,20 +1,16 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eye Care Hospital</title>
-    <!-- Icons aur Google Fonts -->
+    <!-- Google Fonts for premium look -->
+    <link href="https://googleapis.com" rel="stylesheet">
+    <!-- FontAwesome for icons -->
     <link rel="stylesheet" href="https://cloudflare.com">
-    <link rel="preconnect" href="https://googleapis.com">
-    <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
+    
     <style>
-        /* ==========================================================================
-           1. RESET & BASE STYLES
-           ========================================================================== */
+        /* --- Reset & Base Styles --- */
         * {
             margin: 0;
             padding: 0;
@@ -24,91 +20,102 @@
 
         body {
             overflow-x: hidden;
-            background-color: #ffffff;
         }
 
-        /* ==========================================================================
-           2. NAVIGATION HEADER MENU
-           ========================================================================== */
-        .site-header {
-            position: absolute;
+        /* --- Navigation Menu --- */
+        .navbar {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            z-index: 100;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0));
-            padding: 20px 0;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            padding: 0 20px;
+            align-items: center;
+            padding: 20px 8%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+            transition: all 0.3s ease;
         }
 
         .logo {
-            color: #ffffff;
             font-size: 24px;
             font-weight: 700;
+            color: #0056b3;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .logo span {
-            color: #00d2d3;
+        .logo i {
+            color: #00a8cc;
         }
 
-        .main-menu ul {
+        .nav-links {
             display: flex;
             list-style: none;
+            gap: 35px;
         }
 
-        .main-menu ul li {
-            margin: 0 15px;
-        }
-
-        .main-menu ul li a {
-            color: #ffffff;
+        .nav-links a {
             text-decoration: none;
-            font-size: 15px;
+            color: #333;
             font-weight: 500;
-            transition: 0.3s ease;
+            font-size: 16px;
+            transition: color 0.3s ease;
+            position: relative;
         }
 
-        .main-menu ul li a:hover,
-        .main-menu ul li a.active {
-            color: #00d2d3;
+        .nav-links a:hover, .nav-links a.active {
+            color: #0056b3;
         }
 
-        .appointment-btn {
-            background-color: #00d2d3;
-            color: #ffffff;
-            padding: 10px 22px;
+        /* Underline hover effect */
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #00a8cc;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-btn {
+            background: linear-gradient(135deg, #0056b3, #00a8cc);
+            color: #fff;
+            padding: 12px 25px;
+            border-radius: 50px;
             text-decoration: none;
-            font-weight: 500;
-            border-radius: 5px;
-            transition: 0.3s ease;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0, 168, 204, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .appointment-btn:hover {
-            background-color: #1dd1a1;
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 168, 204, 0.5);
         }
 
-        /* ==========================================================================
-           3. HERO SECTION & FADE BACKGROUND SLIDER
-           ========================================================================== */
-        .hero-section {
+        /* --- Hero Slider Section --- */
+        .hero {
             position: relative;
             width: 100%;
             height: 100vh;
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
         }
 
-        .banner-slider {
+        /* Background Slider Containers */
+        .slide-container {
             position: absolute;
             top: 0;
             left: 0;
@@ -119,259 +126,182 @@
 
         .slide {
             position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             opacity: 0;
-            animation: fadeSlider 15s infinite ease-in-out;
+            transition: opacity 1.5s ease-in-out; /* Smooth Fade Effect */
         }
 
-        /* Slide delays for smooth sequential fading */
-        .slide:nth-child(1) { animation-delay: 0s; }
-        .slide:nth-child(2) { animation-delay: 5s; }
-        .slide:nth-child(3) { animation-delay: 10s; }
-
-        @keyframes fadeSlider {
-            0% { opacity: 0; }
-            10% { opacity: 1; }
-            33.33% { opacity: 1; }
-            43.33% { opacity: 0; }
-            100% { opacity: 0; }
+        /* Adding a premium dark overlay over images for text readability */
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3));
         }
 
+        .slide.active {
+            opacity: 1;
+        }
+
+        /* Hero Content */
         .hero-content {
             position: relative;
             z-index: 2;
-            max-width: 800px;
             text-align: center;
-            color: #ffffff;
+            color: #fff;
+            max-width: 800px;
             padding: 0 20px;
-            margin-top: 60px;
-        }
-
-        .sub-title {
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #00d2d3;
-            font-weight: 600;
-            display: inline-block;
-            margin-bottom: 15px;
+            margin-top: 80px; /* Space for fixed navbar */
         }
 
         .hero-content h1 {
-            font-size: 48px;
+            font-size: 56px;
             font-weight: 700;
             line-height: 1.2;
             margin-bottom: 20px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease forwards;
         }
 
         .hero-content p {
-            font-size: 16px;
-            line-height: 1.6;
+            font-size: 18px;
             margin-bottom: 35px;
-            color: #f5f5f5;
+            opacity: 0.9;
+            animation: fadeInUp 1.2s ease forwards;
         }
 
-        .hero-buttons a {
-            display: inline-block;
-            padding: 12px 30px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 500;
-            margin: 0 10px;
-            transition: 0.3s ease;
+        .cta-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            animation: fadeInUp 1.4s ease forwards;
         }
 
         .btn-primary {
-            background-color: #00d2d3;
-            color: #ffffff;
+            background: #00a8cc;
+            color: #white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
         }
 
         .btn-primary:hover {
-            background-color: #1dd1a1;
+            background: #0056b3;
+            transform: scale(1.05);
         }
 
         .btn-secondary {
-            border: 2px solid #ffffff;
-            color: #ffffff;
+            background: transparent;
+            color: #fff;
+            border: 2px solid #fff;
+            padding: 13px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
         }
 
         .btn-secondary:hover {
-            background-color: #ffffff;
-            color: #333333;
+            background: #fff;
+            color: #333;
         }
 
-        /* ==========================================================================
-           4. ABOUT US SECTION (CLEAN PREMIUM LAYOUT)
-           ========================================================================== */
-        .about-section {
-            padding: 100px 0;
-            background-color: #f1f5f9; /* Soft slate premium background */
-            width: 100%;
-            display: flex;
-            justify-content: center;
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .about-container {
-            max-width: 1200px;
-            width: 100%;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 20px;
-            gap: 50px;
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links, .nav-btn {
+                display: none; /* Can be integrated into a burger menu later */
+            }
+            .hero-content h1 {
+                font-size: 38px;
+            }
+            .hero-content p {
+                font-size: 16px;
+            }
+            .cta-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navigation Menu -->
+    <header class="navbar">
+        <div class="logo">
+            <i class="fa-solid fa-eye"></i> OmniEye Care
+        </div>
+        <ul class="nav-links">
+            <li><a href="#" class="active">Home</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Doctors</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        <a href="#" class="nav-btn"><i class="fa-regular fa-calendar-check"></i> Book Appointment</a>
+    </header>
+
+    <!-- Hero Slider Section -->
+    <section class="hero">
+        <div class="slide-container">
+            <!-- Aapki Teeno Images Auto Fade Ke Sath -->
+            <div class="slide active" style="background-image: url('banner11.jpg');"></div>
+            <div class="slide" style="background-image: url('banner12.jpg');"></div>
+            <div class="slide" style="background-image: url('banner13.jpg');"></div>
+        </div>
+
+        <!-- Attractive Hero Content -->
+        <div class="hero-content">
+            <h1>Your Vision Is Our Absolute Mission</h1>
+            <p>Experience world-class eye care treatments with state-of-the-art technology and our team of expert ophthalmologists.</p>
+            <div class="cta-container">
+                <a href="#" class="btn-primary">Our Services</a>
+                <a href="#" class="btn-secondary">Meet Our Specialists</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- JavaScript for Auto Fade Slider -->
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+        const slideInterval = 4000; // 4 seconds ke baad slide badlegi
+
+        function nextSlide() {
+            // Current slide se active class hatao
+            slides[currentSlide].classList.remove('active');
+            
+            // Agli slide par jao
+            currentSlide = (currentSlide + 1) % slides.length;
+            
+            // Nayi slide ko active class do
+            slides[currentSlide].classList.add('active');
         }
 
-        .about-content {
-            flex: 1;
-        }
+        // Slider ko automatic start karne ke liye
+        setInterval(nextSlide, slideInterval);
+    </script>
 
-        .about-section-tag {
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: #00d2d3;
-            font-weight: 600;
-            display: inline-block;
-            margin-bottom: 12px;
-        }
-
-        .about-content h2 {
-            font-size: 38px;
-            color: #0f172a;
-            font-weight: 700;
-            line-height: 1.3;
-            margin-bottom: 20px;
-        }
-
-        .lead-text {
-            font-size: 17px;
-            color: #334155;
-            font-weight: 500;
-            margin-bottom: 15px;
-        }
-
-        .about-content p {
-            font-size: 15px;
-            color: #475569;
-            line-height: 1.7;
-            margin-bottom: 25px;
-        }
-
-        .about-features {
-            list-style: none;
-            margin-bottom: 35px;
-            padding: 0;
-        }
-
-        .about-features li {
-            font-size: 16px;
-            color: #0f172a;
-            font-weight: 500;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .about-features li i {
-            color: #00d2d3;
-            font-size: 18px;
-        }
-
-        .btn-about {
-            display: inline-block;
-            background-color: #0f172a;
-            color: #ffffff;
-            padding: 12px 30px;
-            text-decoration: none;
-            font-weight: 500;
-            border-radius: 6px;
-            transition: 0.3s ease;
-        }
-
-        .btn-about:hover {
-            background-color: #00d2d3;
-        }
-
-        /* --- Circle Image Layout --- */
-        .about-image-wrapper {
-            flex: 1;
-            position: relative;
-            height: 480px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .circle-frame {
-            position: absolute;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 6px solid #ffffff;
-            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
-            transition: transform 0.4s ease, z-index 0.4s ease, border-color 0.4s ease;
-        }
-
-        .circle-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .frame-1 {
-            width: 260px;
-            height: 260px;
-            top: 20px;
-            left: 40px;
-            z-index: 3;
-        }
-
-        .frame-2 {
-            width: 220px;
-            height: 220px;
-            bottom: 30px;
-            left: 160px;
-            z-index: 2;
-        }
-
-        .frame-3 {
-            width: 180px;
-            height: 180px;
-            top: 80px;
-            right: 40px;
-            z-index: 1;
-        }
-
-        .circle-frame:hover {
-            transform: scale(1.05);
-            z-index: 5;
-            border-color: #00d2d3;
-        }
-
-        .deco-circle {
-            position: absolute;
-            width: 320px;
-            height: 320px;
-            border: 2px dashed #00d2d3;
-            border-radius: 50%;
-            z-index: 0;
-            opacity: 0.2;
-            top: 50px;
-            left: 80px;
-            animation: rotateRing 20s linear infinite;
-        }
-
-        @keyframes rotateRing {
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Responsive Settings */
-        @media (max-width: 991px) {
-            .nav-container { padding: 0 15px; }
+</body>
+</html>
