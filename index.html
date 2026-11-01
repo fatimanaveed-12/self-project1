@@ -492,74 +492,123 @@
 
 
 
+   
+
+    
     <!-- ================================================================= -->
-    <!-- Doctors Section (Paste this right below the About Us </section>) -->
+    <!-- New Ultra-Attractive Doctors Section with Functional Popup Modal -->
     <!-- ================================================================= -->
     <style>
+        :root {
+            --primary: #0056b3;
+            --secondary: #00a8cc;
+            --dark: #1e293b;
+            --light: #f8fafc;
+        }
+
         .doctors-section {
-            padding: 80px 8%;
-            background-color: #ffffff;
+            padding: 100px 8%;
+            background: linear-gradient(180deg, #ffffff 0%, #f4f9fc 100%);
         }
 
         .section-header {
             text-align: center;
-            max-width: 600px;
-            margin: 0 auto 50px auto;
+            margin-bottom: 60px;
         }
 
         .section-header .sub-title {
-            color: #00a8cc;
-            font-size: 16px;
+            color: var(--secondary);
+            font-size: 15px;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
+            letter-spacing: 3px;
+            margin-bottom: 12px;
             display: block;
         }
 
         .section-header h2 {
-            color: #0056b3;
-            font-size: 38px;
+            color: var(--primary);
+            font-size: 40px;
             font-weight: 700;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
         }
 
-        /* Compact Grid - No Wasted Space */
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        /* Premium Compact Grid */
         .doctors-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .doctor-card {
-            background: #fff;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-            border: 1px solid #eef2f6;
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0, 86, 179, 0.04);
+            border: 1px solid rgba(0, 168, 204, 0.1);
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            transition: all 0.3s ease;
-        }
-
-        .doctor-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 30px rgba(0, 86, 179, 0.12);
-            border-color: #00a8cc;
-        }
-
-        .doc-img-box {
-            width: 100%;
-            height: 280px;
-            background-color: #f0f5fa;
-            background-size: cover;
-            background-position: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
         }
 
-        /* Direct Compact Content Window */
+        .doctor-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(0, 86, 179, 0.15);
+            border-color: var(--secondary);
+        }
+
+        /* Image Box with dynamic gradient overlay */
+        .doc-img-box {
+            width: 100%;
+            height: 320px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            background-color: #e2ebf0;
+            transition: all 0.4s ease;
+        }
+
+        .doctor-card:hover .doc-img-box {
+            transform: scale(1.03);
+        }
+
+        .doc-img-box::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40%;
+            background: linear-gradient(to top, rgba(0,0,0,0.4), transparent);
+        }
+
+        /* Tight Content Area - No Free Space */
         .doc-info {
-            padding: 20px;
+            padding: 24px;
             text-align: center;
+            background: #ffffff;
+            position: relative;
+            z-index: 2;
+            border-radius: 24px 24px 0 0;
+            margin-top: -20px;
+            box-shadow: 0 -10px 20px rgba(0,0,0,0.02);
             flex-grow: 1;
             display: flex;
             flex-direction: column;
@@ -567,111 +616,110 @@
         }
 
         .doc-info h3 {
-            color: #333;
-            font-size: 20px;
+            color: var(--dark);
+            font-size: 22px;
             font-weight: 700;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
         }
 
         .doc-role {
-            color: #00a8cc;
-            font-size: 14px;
+            color: var(--secondary);
+            font-size: 13px;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+            background: rgba(0, 168, 204, 0.06);
+            display: inline-block;
+            padding: 4px 16px;
+            border-radius: 50px;
         }
 
+        /* Highly Attractive Interactive Button */
         .doc-learn-btn {
-            background: #f0f5fa;
-            color: #0056b3;
+            background: linear-gradient(135deg, #f0f7ff 0%, #e0effe 100%);
+            color: var(--primary);
             border: none;
-            padding: 10px 20px;
-            border-radius: 50px;
+            padding: 14px 24px;
+            border-radius: 16px;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 15px;
             cursor: pointer;
             width: 100%;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 10px;
         }
 
         .doctor-card:hover .doc-learn-btn {
-            background: linear-gradient(135deg, #0056b3, #00a8cc);
-            color: #fff;
-            box-shadow: 0 4px 15px rgba(0, 168, 204, 0.3);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #ffffff;
+            box-shadow: 0 8px 20px rgba(0, 168, 204, 0.3);
+            transform: scale(1.02);
         }
 
-        /* --- Beautiful Detail Popup Modal --- */
+        /* --- Luxury Dynamic Popup Modal --- */
         .doc-modal {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(5px);
-            z-index: 2000;
-            display: flex;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(8px);
+            z-index: 99999; /* Isko sabse upar rakhne ke liye */
+            display: none; /* JS handle karega */
             align-items: center;
             justify-content: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: all 0.3s ease;
-        }
-
-        .doc-modal.open {
-            opacity: 1;
-            pointer-events: auto;
+            padding: 20px;
         }
 
         .modal-container {
-            background: #fff;
-            width: 90%;
-            max-width: 650px;
-            border-radius: 20px;
+            background: #ffffff;
+            width: 100%;
+            max-width: 600px;
+            border-radius: 28px;
             overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.4);
             position: relative;
-            transform: scale(0.8);
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
+            animation: modalFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-        .doc-modal.open .modal-container {
-            transform: scale(1);
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(50px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
         }
 
         .modal-close-btn {
             position: absolute;
-            top: 15px;
+            top: 20px;
             right: 20px;
-            background: rgba(255,255,255,0.8);
+            background: #ffffff;
             border: none;
-            width: 35px;
-            height: 35px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
-            font-size: 18px;
-            color: #333;
+            font-size: 20px;
+            color: var(--dark);
             cursor: pointer;
             z-index: 10;
             display: flex;
             align-items: center;
             justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             transition: all 0.2s;
         }
 
         .modal-close-btn:hover {
-            background: #ff4d4d;
-            color: #fff;
+            background: #ef4444;
+            color: #ffffff;
+            transform: rotate(90deg);
         }
 
         .modal-header-img {
-            height: 200px;
+            height: 240px;
             background-size: cover;
             background-position: center;
             position: relative;
@@ -680,157 +728,113 @@
         .modal-header-img::before {
             content: '';
             position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+            background: linear-gradient(to top, rgba(30, 41, 59, 0.9) 100%, transparent);
         }
 
         .modal-title-box {
             position: absolute;
-            bottom: 20px;
-            left: 25px;
-            color: #fff;
+            bottom: 25px;
+            left: 30px;
+            color: #ffffff;
         }
 
         .modal-title-box h3 {
-            font-size: 26px;
+            font-size: 28px;
             font-weight: 700;
+            margin-bottom: 4px;
         }
 
         .modal-title-box span {
-            color: #00a8cc;
+            color: var(--secondary);
             font-weight: 600;
             text-transform: uppercase;
-            font-size: 13px;
-            letter-spacing: 1px;
+            font-size: 14px;
+            letter-spacing: 2px;
         }
 
         .modal-body-content {
-            padding: 30px;
-            max-height: 400px;
-            overflow-y: auto;
-        }
-
-        .modal-detail-row {
-            margin-bottom: 20px;
-        }
-
-        .modal-detail-row h4 {
-            color: #0056b3;
-            font-size: 16px;
-            margin-bottom: 6px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .modal-detail-row p {
-            color: #555;
-            font-size: 15px;
-            line-height: 1.6;
+            padding: 35px;
+            background: #ffffff;
         }
 
         .modal-stats {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 15px;
+            gap: 20px;
             background: #f8fafc;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 18px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(0,0,0,0.03);
         }
 
         .stat-item span {
             display: block;
-            font-size: 12px;
-            color: #777;
+            font-size: 13px;
+            color: #64748b;
+            margin-bottom: 4px;
         }
 
         .stat-item strong {
+            font-size: 16px;
+            color: var(--dark);
+        }
+
+        .modal-detail-row {
+            margin-bottom: 25px;
+        }
+
+        .modal-detail-row h4 {
+            color: var(--primary);
+            font-size: 17px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+        }
+
+        .modal-detail-row p {
+            color: #475569;
             font-size: 15px;
-            color: #333;
+            line-height: 1.7;
         }
     </style>
 
     <section class="doctors-section">
         <div class="section-header">
-            <span class="sub-title">Our Specialists</span>
-            <h2>Meet Our Expert Eye Doctors</h2>
+            <span class="sub-title">Medical Specialists</span>
+            <h2>Our Expert Ophthalmologists</h2>
         </div>
 
-        <!-- Tight, space-optimized Grid -->
         <div class="doctors-grid">
             
             <!-- Doctor 1 Card -->
             <div class="doctor-card">
-                <!-- Aap yahan apni images dynamically doc1.jpg lagayein, abhi placeholder background hai -->
-                <div class="doc-img-box" style="background-image: url('doc1.jpg'); background-color: #e2ebf0;"></div>
+                <div class="doc-img-box" style="background-image: url('doc1.jpg');"></div>
                 <div class="doc-info">
                     <div>
                         <h3>Dr. Sarah Ahmed</h3>
                         <div class="doc-role">LASIK & Refractive Surgeon</div>
                     </div>
-                    <button class="doc-learn-btn" onclick="openDoctorModal('sarah')">
-                        Learn More <i class="fa-solid fa-arrow-right"></i>
+                    <button class="doc-learn-btn" onclick="showDoctorDetails('sarah')">
+                        Learn More <i class="fa-solid fa-arrow-right-long"></i>
                     </button>
                 </div>
             </div>
 
             <!-- Doctor 2 Card -->
             <div class="doctor-card">
-                <div class="doc-img-box" style="background-image: url('doc2.jpg'); background-color: #e2ebf0;"></div>
+                <div class="doc-img-box" style="background-image: url('doc2.jpg');"></div>
                 <div class="doc-info">
                     <div>
                         <h3>Dr. Asad Malik</h3>
                         <div class="doc-role">Retina Specialist</div>
                     </div>
-                    <button class="doc-learn-btn" onclick="openDoctorModal('asad')">
-                        Learn More <i class="fa-solid fa-arrow-right"></i>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Doctor 3 Card -->
-            <div class="doctor-card">
-                <div class="doc-img-box" style="background-image: url('doc3.jpg'); background-color: #e2ebf0;"></div>
-                <div class="doc-info">
-                    <div>
-                        <h3>Dr. Zainab Khan</h3>
-                        <div class="doc-role">Pediatric Ophthalmologist</div>
-                    </div>
-                    <button class="doc-learn-btn" onclick="openDoctorModal('zainab')">
-                        Learn More <i class="fa-solid fa-arrow-right"></i>
-                    </button>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Global Modal Structure for Dynamic Details -->
-    <div class="doc-modal" id="doctorModal">
-        <div class="modal-container">
-            <button class="modal-close-btn" onclick="closeDoctorModal()"><i class="fa-solid fa-xmark"></i></button>
-            <div class="modal-header-img" id="modalImg">
-                <div class="modal-title-box">
-                    <h3 id="modalName">Doctor Name</h3>
-                    <span id="modalRole">Specialty</span>
-                </div>
-            </div>
-            <div class="modal-body-content">
-                <div class="modal-stats">
-                    <div class="stat-item">
-                        <span>Experience</span>
-                        <strong id="modalExp">12+ Years</strong>
-                    </div>
-                    <div class="stat-item">
-                        <span>Availability</span>
-
-
-
-
-
-    
 
 
     
