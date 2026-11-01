@@ -492,7 +492,302 @@
 
 
 
-   
+       <!-- ================================================================= -->
+    <!-- Fixed Dark Doctors Section - 4 in a Row - No Round Corners       -->
+    <!-- ================================================================= -->
+    <style>
+        .doctors-section {
+            padding: 80px 8%;
+            background-color: #121824; /* Solid Dark Background */
+            color: #ffffff;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header .sub-title {
+            color: #00a8cc;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .section-header h2 {
+            color: #ffffff;
+            font-size: 36px;
+            font-weight: 700;
+        }
+
+        /* Fixed 4 Columns in One Row */
+        .doctors-row {
+            display: flex;
+            gap: 25px;
+            width: 100%;
+            justify-content: space-between;
+        }
+
+        .doctor-card {
+            background: #1e2640; /* Darker Card Background */
+            width: 25%; /* Perfect split for 4 items */
+            border-radius: 0px !important; /* Strictly Sharp Square Corners */
+            border: 1px solid #2a365c;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .doctor-card:hover {
+            transform: translateY(-5px);
+            border-color: #00a8cc;
+        }
+
+        .doc-img-box {
+            width: 100%;
+            height: 280px;
+            background-size: cover;
+            background-position: center;
+            background-color: #2a365c;
+            border-radius: 0px !important; /* Square corners */
+        }
+
+        .doc-info {
+            padding: 20px;
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: #1e2640;
+        }
+
+        .doc-info h3 {
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .doc-role {
+            color: #00a8cc;
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .doc-learn-btn {
+            background: #0056b3;
+            color: #ffffff;
+            border: none;
+            padding: 12px 20px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 0px !important; /* Square corners */
+            transition: background 0.3s ease;
+        }
+
+        .doc-learn-btn:hover {
+            background: #00a8cc;
+        }
+
+        /* --- Full Screen Modal Window --- */
+        .doc-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 10000;
+            display: none; /* Controlled via JS */
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-box {
+            background: #1e2640;
+            border: 2px solid #00a8cc;
+            width: 90%;
+            max-width: 550px;
+            border-radius: 0px !important; /* Square corners */
+            position: relative;
+            color: #ffffff;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #0056b3;
+            border: none;
+            color: #fff;
+            width: 30px;
+            height: 30px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .modal-close:hover {
+            background: #ff4d4d;
+        }
+
+        .modal-header {
+            padding: 25px;
+            background: #121824;
+            border-bottom: 1px solid #2a365c;
+        }
+
+        .modal-header h3 {
+            font-size: 24px;
+            color: #ffffff;
+            margin-bottom: 5px;
+        }
+
+        .modal-header span {
+            color: #00a8cc;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .modal-body {
+            padding: 25px;
+        }
+
+        .modal-meta-box {
+            background: #121824;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-left: 4px solid #00a8cc;
+        }
+
+        .modal-meta-box p {
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .modal-meta-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .modal-body h4 {
+            color: #00a8cc;
+            font-size: 16px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .modal-body p.bio-text {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #cbd5e1;
+        }
+    </style>
+
+    <section class="doctors-section">
+        <div class="section-header">
+            <span class="sub-title">Specialists</span>
+            <h2>Our Expert Doctors</h2>
+        </div>
+
+        <!-- Strictly 4 Doctors in 1 Row -->
+        <div class="doctors-row">
+            
+            <!-- Doctor 1 -->
+            <div class="doctor-card">
+                <div class="doc-img-box" style="background-image: url('doc1.jpg');"></div>
+                <div class="doc-info">
+                    <div>
+                        <h3>Dr. Sarah Ahmed</h3>
+                        <div class="doc-role">LASIK Surgeon</div>
+                    </div>
+                    <button class="doc-learn-btn" onclick="openProfile('Dr. Sarah Ahmed', 'LASIK Surgeon', '14 Years', 'Mon, Wed, Fri (10 AM - 4 PM)', 'Dr. Sarah Ahmed is an expert in blade-free LASIK surgeries. She has successfully treated thousands of patients over 14 years, restoring clear vision.')">Learn More</button>
+                </div>
+            </div>
+
+            <!-- Doctor 2 -->
+            <div class="doctor-card">
+                <div class="doc-img-box" style="background-image: url('doc2.jpg');"></div>
+                <div class="doc-info">
+                    <div>
+                        <h3>Dr. Asad Malik</h3>
+                        <div class="doc-role">Retina Specialist</div>
+                    </div>
+                    <button class="doc-learn-btn" onclick="openProfile('Dr. Asad Malik', 'Retina Specialist', '16 Years', 'Tue, Thu, Sat (11 AM - 5 PM)', 'Dr. Asad Malik focuses on complex vitreoretinal conditions, diabetes-related eye issues, and laser therapies for advanced retinal care.')">Learn More</button>
+                </div>
+            </div>
+
+            <!-- Doctor 3 -->
+            <div class="doctor-card">
+                <div class="doc-img-box" style="background-image: url('doc3.jpg');"></div>
+                <div class="doc-info">
+                    <div>
+                        <h3>Dr. Zainab Khan</h3>
+                        <div class="doc-role">Pediatric Eye Care</div>
+                    </div>
+                    <button class="doc-learn-btn" onclick="openProfile('Dr. Zainab Khan', 'Pediatric Eye Care Specialist', '10 Years', 'Mon to Thu (2 PM - 7 PM)', 'Dr. Zainab Khan treats vision disorders in children. She specializes in early childhood vision screenings, squints, and lazy eye management.')">Learn More</button>
+                </div>
+            </div>
+
+            <!-- Doctor 4 -->
+            <div class="doctor-card">
+                <div class="doc-img-box" style="background-image: url('doc4.jpg');"></div>
+                <div class="doc-info">
+                    <div>
+                        <h3>Dr. Bilal Vance</h3>
+                        <div class="doc-role">Glaucoma Specialist</div>
+                    </div>
+                    <button class="doc-learn-btn" onclick="openProfile('Dr. Bilal Vance', 'Glaucoma Specialist', '12 Years', 'Mon, Tue, Thu (9 AM - 1 PM)', 'Dr. Bilal Vance is highly trained in managing intraocular pressure and performing advanced micro-invasive glaucoma surgeries.')">Learn More</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Simple Independent Popup Container -->
+    <div class="doc-modal-overlay" id="profilePopup">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeProfile()">X</button>
+            <div class="modal-header">
+                <h3 id="pName">Doctor Name</h3>
+                <span id="pRole">Specialization</span>
+            </div>
+            <div class="modal-body">
+                <div class="modal-meta-box">
+                    <p><strong>Experience:</strong> <span id="pExp"></span></p>
+                    <p><strong>Timings:</strong> <span id="pTime"></span></p>
+                </div>
+                <h4>Biography</h4>
+                <p class="bio-text" id="pBio">Details...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple, clean functions that never fail to launch
+        function openProfile(name, role, exp, timings, bio) {
+            document.getElementById('pName').innerText = name;
+            document.getElementById('pRole').innerText = role;
+            document.getElementById('pExp').innerText = exp;
+            document.getElementById('pTime').innerText = timings;
+            document.getElementById('pBio').innerText = bio;
+            
+            // Force modal screen block to display instantly
+            document.getElementById('profilePopup').style.display = 'flex';
+        }
+
+        function closeProfile() {
+            document.getElementById('profilePopup').style.display = 'none';
+        }
+    </script>
+
 
     
    
