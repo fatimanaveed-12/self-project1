@@ -492,7 +492,345 @@
 
 
 
+    <!-- ================================================================= -->
+    <!-- Doctors Section (Paste this right below the About Us </section>) -->
+    <!-- ================================================================= -->
+    <style>
+        .doctors-section {
+            padding: 80px 8%;
+            background-color: #ffffff;
+        }
 
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 50px auto;
+        }
+
+        .section-header .sub-title {
+            color: #00a8cc;
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .section-header h2 {
+            color: #0056b3;
+            font-size: 38px;
+            font-weight: 700;
+        }
+
+        /* Compact Grid - No Wasted Space */
+        .doctors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+
+        .doctor-card {
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            border: 1px solid #eef2f6;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+        }
+
+        .doctor-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 86, 179, 0.12);
+            border-color: #00a8cc;
+        }
+
+        .doc-img-box {
+            width: 100%;
+            height: 280px;
+            background-color: #f0f5fa;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        /* Direct Compact Content Window */
+        .doc-info {
+            padding: 20px;
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .doc-info h3 {
+            color: #333;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .doc-role {
+            color: #00a8cc;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .doc-learn-btn {
+            background: #f0f5fa;
+            color: #0056b3;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .doctor-card:hover .doc-learn-btn {
+            background: linear-gradient(135deg, #0056b3, #00a8cc);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(0, 168, 204, 0.3);
+        }
+
+        /* --- Beautiful Detail Popup Modal --- */
+        .doc-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+
+        .doc-modal.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-container {
+            background: #fff;
+            width: 90%;
+            max-width: 650px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            position: relative;
+            transform: scale(0.8);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .doc-modal.open .modal-container {
+            transform: scale(1);
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: rgba(255,255,255,0.8);
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            font-size: 18px;
+            color: #333;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .modal-close-btn:hover {
+            background: #ff4d4d;
+            color: #fff;
+        }
+
+        .modal-header-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .modal-header-img::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+        }
+
+        .modal-title-box {
+            position: absolute;
+            bottom: 20px;
+            left: 25px;
+            color: #fff;
+        }
+
+        .modal-title-box h3 {
+            font-size: 26px;
+            font-weight: 700;
+        }
+
+        .modal-title-box span {
+            color: #00a8cc;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 1px;
+        }
+
+        .modal-body-content {
+            padding: 30px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .modal-detail-row {
+            margin-bottom: 20px;
+        }
+
+        .modal-detail-row h4 {
+            color: #0056b3;
+            font-size: 16px;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .modal-detail-row p {
+            color: #555;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .modal-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            background: #f8fafc;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .stat-item span {
+            display: block;
+            font-size: 12px;
+            color: #777;
+        }
+
+        .stat-item strong {
+            font-size: 15px;
+            color: #333;
+        }
+    </style>
+
+    <section class="doctors-section">
+        <div class="section-header">
+            <span class="sub-title">Our Specialists</span>
+            <h2>Meet Our Expert Eye Doctors</h2>
+        </div>
+
+        <!-- Tight, space-optimized Grid -->
+        <div class="doctors-grid">
+            
+            <!-- Doctor 1 Card -->
+            <div class="doctor-card">
+                <!-- Aap yahan apni images dynamically doc1.jpg lagayein, abhi placeholder background hai -->
+                <div class="doc-img-box" style="background-image: url('doc1.jpg'); background-color: #e2ebf0;"></div>
+                <div class="doc-info">
+                    <div>
+                        <h3>Dr. Sarah Ahmed</h3>
+                        <div class="doc-role">LASIK & Refractive Surgeon</div>
+                    </div>
+                    <button class="doc-learn-btn" onclick="openDoctorModal('sarah')">
+                        Learn More <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Doctor 2 Card -->
+            <div class="doctor-card">
+                <div class="doc-img-box" style="background-image: url('doc2.jpg'); background-color: #e2ebf0;"></div>
+                <div class="doc-info">
+                    <div>
+                        <h3>Dr. Asad Malik</h3>
+                        <div class="doc-role">Retina Specialist</div>
+                    </div>
+                    <button class="doc-learn-btn" onclick="openDoctorModal('asad')">
+                        Learn More <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Doctor 3 Card -->
+            <div class="doctor-card">
+                <div class="doc-img-box" style="background-image: url('doc3.jpg'); background-color: #e2ebf0;"></div>
+                <div class="doc-info">
+                    <div>
+                        <h3>Dr. Zainab Khan</h3>
+                        <div class="doc-role">Pediatric Ophthalmologist</div>
+                    </div>
+                    <button class="doc-learn-btn" onclick="openDoctorModal('zainab')">
+                        Learn More <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Global Modal Structure for Dynamic Details -->
+    <div class="doc-modal" id="doctorModal">
+        <div class="modal-container">
+            <button class="modal-close-btn" onclick="closeDoctorModal()"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-header-img" id="modalImg">
+                <div class="modal-title-box">
+                    <h3 id="modalName">Doctor Name</h3>
+                    <span id="modalRole">Specialty</span>
+                </div>
+            </div>
+            <div class="modal-body-content">
+                <div class="modal-stats">
+                    <div class="stat-item">
+                        <span>Experience</span>
+                        <strong id="modalExp">12+ Years</strong>
+                    </div>
+                    <div class="stat-item">
+                        <span>Availability</span>
+
+
+
+
+
+    
 
 
     
